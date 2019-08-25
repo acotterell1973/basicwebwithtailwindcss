@@ -1,7 +1,7 @@
 'use strict';
 
 // Global Configs ============================================================
-const isDev = ((process.env.NODE_ENV || 'development').trim().toLowerCase() === 'development');
+const isDev = (process.env.NODE_ENV || 'development').trim().toLowerCase() === 'development';
 const isProd = !isDev;
 const paths = {
     root: './',

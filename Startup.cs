@@ -29,7 +29,6 @@ namespace tailwindcss
             app.UseStaticFiles();
             app.UseRouting();
 
-
           
         }
     }

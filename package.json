@@ -1,5 +1,5 @@
 {
-  "name": "tailwindcss",
+  "name": "basicwebwithtailwindcss",
   "version": "1.0.0",
   "description": "a test bed for ideas",
   "main": "gulpfile.js",
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/acotterell1973/tailwindcss#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2"
+    "gulp-sass": "^4.0.2",
+    "tailwindcss": "^1.1.2"
   }
 }
