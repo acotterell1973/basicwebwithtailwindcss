@@ -1,32 +1,39 @@
-'use strict';
+const { src, dest, series, parallel } = require('gulp');
+const options = require("./package.json").options; //Options : paths and other options from package.json
+const postcss = require('gulp-postcss'); //For Compiling tailwind utilities with tailwind config
+const concat = require('gulp-concat'); //For Concatinating js,css files
+const del = require('del'); //For Cleaning build/dist for fresh export
+const logSymbols = require('log-symbols'); //For Symbolic Console logs :) :P
 
-// Global Configs ============================================================
-const isDev = (process.env.NODE_ENV || 'development').trim().toLowerCase() === 'development';
-const isProd = !isDev;
-const paths = {
-    root: './',
-    src: './src/',
-    build: './wwwroot/'
+const clean = function (cb) {
+    console.log("\n\t" + logSymbols.info, "Cleaning build folder for fresh start.\n");
+    return del(['build']);
 };
 
-const libsBasePath = './node_modules/';
-
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-
-var cssConfig = {
-    src: paths.src + '/scss/*.*/*.scss',
-    dest: paths.build + 'assets/css'
+const devStyles = function (cb) {
+    var tailwindcss = require('tailwindcss');
+    var autoprefixer = require('autoprefixer');
+    var postCssImport = require('postcss-import');
+    return src(options.paths.src.css + '/main.css')
+        .pipe(postcss(
+            [
+                postCssImport,
+                tailwindcss(options.config.tailwindcss),
+                autoprefixer
+            ]
+        ))
+        .pipe(concat({ path: 'main.css' }))
+        .pipe(dest(options.paths.dist.css));
 };
 
-gulp.task('convert-sass', function () {
-    return gulp.src(cssConfig.src)
-        .pipe(sass())
-        .pipe(cssConfig.dest);
-});
+const javascript = function (cb) {
 
-gulp.task('watch', function () {
-    //css changes
-    gulp.watch(cssConfig.src, ['convert-sass'] );
-});
+    cb();
+};
 
+function defaultTask(cb) {
+
+    cb();
+}
+
+exports.default = series(clean, parallel(devStyles, javascript));

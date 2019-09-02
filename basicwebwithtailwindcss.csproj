@@ -5,13 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\assets\**" />
+    <Content Remove="wwwroot\assets\**" />
+    <EmbeddedResource Remove="wwwroot\assets\**" />
+    <None Remove="wwwroot\assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="src\fonts\" />
     <Folder Include="src\images\" />
     <Folder Include="src\js\" />
-    <Folder Include="wwwroot\assets\css\" />
-    <Folder Include="wwwroot\assets\js\" />
-    <Folder Include="wwwroot\assets\fonts\" />
-    <Folder Include="wwwroot\assets\images\" />
+    <Folder Include="wwwroot\dist\css\" />
   </ItemGroup>
 
   <ItemGroup>

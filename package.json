@@ -10,6 +10,32 @@
     "type": "git",
     "url": "git+https://github.com/acotterell1973/tailwindcss.git"
   },
+  "options": {
+    "config": {
+      "tailwindjs": "./tailwind.js"
+    },
+    "paths": {
+      "root": "./",
+      "src": {
+        "base": "./src",
+        "css": "./src/css",
+        "js": "./src/js",
+        "img": "./src/img"
+      },
+      "dist": {
+        "base": "./wwwroot/dist",
+        "css": "./wwwroot/dist/css",
+        "js": "./wwwroot/dist/js",
+        "img": "./wwwroot/dist/img"
+      },
+      "build": {
+        "base": "./wwwroot",
+        "css": "./wwwroot/dist/css",
+        "js": "./wwwroot/dist/js",
+        "img": "./wwwroot/dist/img"
+      }
+    }
+  },
   "keywords": [
     "html5",
     ".net",
@@ -24,8 +50,16 @@
   },
   "homepage": "https://github.com/acotterell1973/tailwindcss#readme",
   "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "cssnano": "^4.1.10",
+    "del": "^5.1.0",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-watch": "^5.0.1",
+    "log-symbols": "^3.0.0",
+    "postcss-import": "^12.0.1",
     "tailwindcss": "^1.1.2"
   }
 }
